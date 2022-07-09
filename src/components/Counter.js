@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { counterActions } from '../store/index';
 import classes from './Counter.module.css';
 
 const Counter = () => {
@@ -7,19 +8,18 @@ const Counter = () => {
   const isShown = useSelector(state => state.isShown);
 
   const incrementHandle = () => {
-    dispatch({ type: 'increment'});   //exactly same as action in store
+    dispatch(counterActions.increment());
   }
-
   const increaseHandler = () => {
-    dispatch({ type: 'increase', amount: 5 });
+    dispatch(counterActions.increase(5)); //I just pass value which behind scene go to "payload" which i catch in actions
   }
 
   const decrementtHandle = () => {
-    dispatch({ type: 'decrement'});   //exactly same as action in store
+    dispatch(counterActions.decrement());
   }
 
   const toggleCounterHandler = () => {
-    dispatch({type: 'toggleShowHide'});
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
